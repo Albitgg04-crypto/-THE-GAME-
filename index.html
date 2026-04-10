@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffe4e1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Press Start 2P', cursive;
+            color: #ff69b4;
+            flex-direction: column;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border: 8px solid #ff69b4;
+            box-shadow: 10px 10px 0px #db7093;
+            text-align: center;
+            max-width: 80%;
+        }
+
+        .loading-bar {
+            width: 100%;
+            height: 30px;
+            border: 4px solid #ff69b4;
+            margin: 20px 0;
+            position: relative;
+            background: #fff;
+        }
+
+        .progress {
+            width: 0%;
+            height: 100%;
+            background: #ff6a9a;
+            transition: width 3s ease-in-out;
+        }
+
+        .heart {
+            font-size: 40px;
+            margin-bottom: 20px;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        button {
+            background: #ff69b4;
+            color: white;
+            border: 4px solid #fff;
+            padding: 15px 25px;
+            font-family: 'Press Start 2P', cursive;
+            cursor: pointer;
+            box-shadow: 4px 4px 0px #db7093;
+        }
+
+        #qr-container {
+            display: none; /* Se oculta hasta que cargue */
+            margin-top: 20px;
+        }
+
+        img {
+            width: 200px;
+            border: 4px solid #ff69b4;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="heart">❤</div>
+    <h1 id="titulo">NIVEL 1: ACCESO RESTRINGIDO</h1>
+    <p id="subtitulo">Solo para el mejor novio...</p>
+
+    <div id="fase-carga">
+        <div class="loading-bar">
+            <div class="progress" id="bar"></div>
+        </div>
+        <button onclick="iniciarCarga()">[ DESBLOQUEAR ]</button>
+    </div>
+
+    <div id="qr-container">
+        <h2>¡ACCESO CONCEDIDO!</h2>
+        <p>Escanea este código o haz clic para ver tu sorpresa:</p>
+        <a href="TU_OTRO_LINK_AQUI">
+            <img src="TU_IMAGEN_DE_QR_AQUI.png" alt="QR Regalo">
+        </a>
+        <p style="font-size: 10px; margin-top: 10px;">(Haz clic en el QR si no puedes escanear)</p>
+    </div>
+</div>
+
+<script>
+    function iniciarCarga() {
+        const bar = document.getElementById('bar');
+        const titulo = document.getElementById('titulo');
+        const subtitulo = document.getElementById('subtitulo');
+        const btn = document.querySelector('button');
+
+        btn.style.display = 'none';
+        bar.style.width = '100%';
+        subtitulo.innerText = "Sincronizando corazones...";
+
+        setTimeout(() => {
+            document.getElementById('fase-carga').style.display = 'none';
+            document.getElementById('qr-container').style.display = 'block';
+            titulo.innerText = "¡FELIZ MES!";
+        }, 3200);
+    }
+</script>
+
+</body>
+</html>
