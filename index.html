@@ -64,7 +64,7 @@
         }
 
         #qr-container {
-            display: none; /* Se oculta hasta que cargue */
+            display: none;
             margin-top: 20px;
         }
 
@@ -81,16 +81,6 @@
     Tu navegador no soporta la música.
 </audio>
 
-<script>
-    
-    // La música no puede sonar sola por reglas de Google, 
-    // así que empezará cuando él le dé al botón de DESBLOQUEAR.
-    function reproducirMusica() {
-        var audio = document.getElementById("musica");
-        audio.volume = 0.5; // Volumen al 50% para que no le asuste
-        audio.play();
-    }
-</script>
 <div class="container">
     <div class="heart">❤</div>
     <h1 id="titulo">NIVEL 1: ACCESO RESTRINGIDO</h1>
@@ -114,17 +104,15 @@
 </div>
 
 <script>
-    function iniciarCarga() {
-    reproducirMusica(); // <--- AÑADE ESTA LÍNEA AQUÍ
-    
-    const bar = document.getElementById('bar');
-    const titulo = document.getElementById('titulo');
-    const subtitulo = document.getElementById('subtitulo');
-    const btn = document.querySelector('button');
+    function reproducirMusica() {
+        var audio = document.getElementById("musica");
+        audio.volume = 0.5;
+        audio.play();
+    }
 
-    btn.style.display = 'none';
-    
     function iniciarCarga() {
+        reproducirMusica();
+        
         const bar = document.getElementById('bar');
         const titulo = document.getElementById('titulo');
         const subtitulo = document.getElementById('subtitulo');
