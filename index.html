@@ -75,7 +75,20 @@
     </style>
 </head>
 <body>
+<audio id="musica" loop>
+    <source src="https://www.chosic.com/wp-content/uploads/2021/07/The-Grand-Selection-8-bit.mp3" type="audio/mpeg">
+    Tu navegador no soporta la música.
+</audio>
 
+<script>
+    // La música no puede sonar sola por reglas de Google, 
+    // así que empezará cuando él le dé al botón de DESBLOQUEAR.
+    function reproducirMusica() {
+        var audio = document.getElementById("musica");
+        audio.volume = 0.5; // Volumen al 50% para que no le asuste
+        audio.play();
+    }
+</script>
 <div class="container">
     <div class="heart">❤</div>
     <h1 id="titulo">NIVEL 1: ACCESO RESTRINGIDO</h1>
@@ -99,6 +112,16 @@
 </div>
 
 <script>
+    function iniciarCarga() {
+    reproducirMusica(); // <--- AÑADE ESTA LÍNEA AQUÍ
+    
+    const bar = document.getElementById('bar');
+    const titulo = document.getElementById('titulo');
+    const subtitulo = document.getElementById('subtitulo');
+    const btn = document.querySelector('button');
+
+    btn.style.display = 'none';
+    
     function iniciarCarga() {
         const bar = document.getElementById('bar');
         const titulo = document.getElementById('titulo');
